@@ -30,12 +30,12 @@ class CategoryAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
         holder.text.text = category.name
+        val isSelected = selectedPosition == position
+        holder.text.isSelected = isSelected
 
-        if (selectedPosition == position) {
-            holder.card.setCardBackgroundColor(Color.BLACK)
+        if (isSelected) {
             holder.text.setTextColor(Color.WHITE)
         } else {
-            holder.card.setCardBackgroundColor(Color.WHITE)
             holder.text.setTextColor(Color.BLACK)
         }
 
