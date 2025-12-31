@@ -26,13 +26,12 @@ class ProfileFragment : Fragment() {
 
         val rvProfileDesigns = view.findViewById<RecyclerView>(R.id.rvProfileDesigns)
         val btnEdit = view.findViewById<Button>(R.id.btnEditProfile)
+        val btnSettings = view.findViewById<android.widget.ImageView>(R.id.btnSettings)
 
-        // 1. Setup Grid
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
         rvProfileDesigns.layoutManager = layoutManager
 
-        // 2. Dummy Data (Ceritanya ini postingan user sendiri)
         val myDesigns = listOf(
             DesignItem(101, "My Studio", "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=400&q=80"),
             DesignItem(102, "Minimalist Kitchen", "https://images.unsplash.com/photo-1556912173-3db996ea0661?auto=format&fit=crop&w=400&q=80"),
@@ -40,11 +39,23 @@ class ProfileFragment : Fragment() {
             DesignItem(104, "Draft #1", "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80")
         )
 
-        rvProfileDesigns.adapter = DesignAdapter(myDesigns)
+        rvProfileDesigns.adapter = DesignAdapter(myDesigns) { item ->
+            val bundle = Bundle().apply {
+                putInt("id", item.id)
+                putString("title", item.title)
+                putString("imageUrl", item.imageUrl)
+            }
 
-        // 3. Tombol Edit
+            androidx.navigation.Navigation.findNavController(view)
+                .navigate(R.id.nav_detail, bundle)
+        }
+
         btnEdit.setOnClickListener {
             Toast.makeText(requireContext(), "Fitur Edit Profile Coming Soon!", Toast.LENGTH_SHORT).show()
+        }
+
+        btnSettings.setOnClickListener {
+            androidx.navigation.Navigation.findNavController(view).navigate(R.id.nav_settings)
         }
     }
 }

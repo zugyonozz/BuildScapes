@@ -1,7 +1,11 @@
 package com.example.buildscapes.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "saved_designs")
 data class DesignItem(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val title: String,
     val imageUrl: String
 )

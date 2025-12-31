@@ -11,7 +11,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.example.buildscapes.manager.BookmarkManager
 
 class UploadFragment : Fragment() {
 

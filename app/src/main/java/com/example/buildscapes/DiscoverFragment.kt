@@ -65,6 +65,15 @@ class DiscoverFragment : Fragment() {
             DesignItem(6, "Swimming Pool", "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80")
         )
 
-        rvDesigns.adapter = DesignAdapter(mockData)
+        rvDesigns.adapter = DesignAdapter(mockData) { item ->
+            val bundle = Bundle().apply {
+                putInt("id", item.id)
+                putString("title", item.title)
+                putString("imageUrl", item.imageUrl)
+            }
+
+            androidx.navigation.Navigation.findNavController(view)
+                .navigate(R.id.nav_detail, bundle)
+        }
     }
 }

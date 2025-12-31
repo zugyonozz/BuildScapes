@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_bookmark"
-        android:name="com.example.buildscapes.SavedFragment"
+        android:name="com.example.buildscapes.BookmarkFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_bookmark" />
 
@@ -34,5 +34,22 @@
         android:name="com.example.buildscapes.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.example.buildscapes.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+
+        <argument android:name="id" app:argType="integer" />
+        <argument android:name="title" app:argType="string" />
+        <argument android:name="imageUrl" app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.buildscapes.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>
