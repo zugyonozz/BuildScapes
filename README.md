@@ -139,3 +139,10 @@ BuildScapes/
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
+````
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
