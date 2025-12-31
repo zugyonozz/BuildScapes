@@ -10,7 +10,7 @@ Thank you for your interest in contributing!
 2. Create a new branch:
    ```bash
    git checkout -b feat/your-feature-name
-````
+   ```
 
 3. Commit changes following the commit message convention
 4. Push to your fork
