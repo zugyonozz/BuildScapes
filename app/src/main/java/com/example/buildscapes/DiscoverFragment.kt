@@ -20,20 +20,13 @@ class DiscoverFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate layout fragment_home.xml
         return inflater.inflate(R.layout.fragment_discover, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupCategories(view)
         setupDesignGrid(view)
-
-        val btnNotification = view.findViewById<android.widget.ImageView>(R.id.btnNotification)
-        btnNotification.setOnClickListener {
-            androidx.navigation.Navigation.findNavController(view).navigate(R.id.nav_notifications)
-        }
     }
 
     private fun setupCategories(view: View) {
@@ -48,7 +41,6 @@ class DiscoverFragment : Fragment() {
             Category("Minimalist")
         )
 
-        // Pake requireContext() pengganti 'this'
         rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         rvCategories.adapter = CategoryAdapter(categories) { selectedCategory ->

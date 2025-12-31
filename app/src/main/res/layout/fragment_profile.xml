@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
@@ -20,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="erinaceline_arch"
+                android:text="@string/profile_username"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -29,7 +28,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_preferences"
+                android:src="@drawable/ic_setting"
                 app:tint="@color/black"
                 android:layout_gravity="end"
                 android:layout_marginEnd="16dp"/>
@@ -58,7 +57,7 @@
                     android:id="@+id/imgProfile"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_person_black"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#E0E0E0"/>
 
@@ -159,27 +158,6 @@
                 android:layout_marginTop="16dp"
                 app:elevation="0dp"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:tint="@color/black"/>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:src="@android:drawable/btn_star"
-                    app:tint="#BDBDBD"/>
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"

@@ -11,10 +11,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+
         bottomNav.setupWithNavController(navController)
+        setupNotificationBadge(bottomNav)
+    }
+
+    private fun setupNotificationBadge(bottomNav: BottomNavigationView) {
+        val badge = bottomNav.getOrCreateBadge(R.id.nav_notifications)
+
+        badge.isVisible = true
+        badge.number = 5
     }
 }
