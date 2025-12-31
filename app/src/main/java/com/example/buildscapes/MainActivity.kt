@@ -1,4 +1,4 @@
-package com.example.BuildScapes
+package com.example.buildscapes
 
 import android.os.Bundle
 import android.widget.Toast
@@ -10,7 +10,6 @@ import com.example.buildscapes.adapter.CategoryAdapter
 import com.example.buildscapes.adapter.DesignAdapter
 import com.example.buildscapes.model.Category
 import com.example.buildscapes.model.DesignItem
-import com.example.buildscapes.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,17 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Kita panggil fungsi setup di sini biar jalan pas aplikasi dibuka
         setupCategories()
         setupDesignGrid()
     }
 
     private fun setupCategories() {
-        // [PENTING] Ini baris yang kamu lupakan tadi, Rara!
-        // Kita harus cari dulu id-nya dari XML biar bisa dipake.
         val rvCategories = findViewById<RecyclerView>(R.id.rvCategories)
-
-        // Data dummy kategori
         val categories = listOf(
             Category("All", true),
             Category("House"),
@@ -38,26 +32,17 @@ class MainActivity : AppCompatActivity() {
             Category("Minimalist")
         )
 
-        // Setup Layout Manager (Horizontal ke samping)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-        // Setup Adapter
         rvCategories.adapter = CategoryAdapter(categories) { selectedCategory ->
-            // Ini aksi kalau diklik
             Toast.makeText(this, "Memilih: $selectedCategory", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun setupDesignGrid() {
-        // [PENTING] Ini juga jangan lupa!
         val rvDesigns = findViewById<RecyclerView>(R.id.rvDesigns)
-
-        // Pake Staggered Grid biar kayak Pinterest (selang-seling tingginya)
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
         rvDesigns.layoutManager = layoutManager
-
-        // Data Dummy Gambar (URL asli dari Unsplash)
         val mockData = listOf(
             DesignItem(1, "Modern House", "https://images.unsplash.com/photo-1600596542815-27bfefd5c3c8?auto=format&fit=crop&w=400&q=80"),
             DesignItem(2, "Luxury Villa", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80"),

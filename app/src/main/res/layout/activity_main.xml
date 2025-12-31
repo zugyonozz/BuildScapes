@@ -61,7 +61,6 @@
                     android:src="@android:drawable/ic_popup_reminder"
                     app:tint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_centerY_toListOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,10 +12,8 @@ import com.example.buildscapes.model.Category
 
 class CategoryAdapter(
     private val categories: List<Category>,
-    private val onCategoryClick: (String) -> Unit // Callback biar MainActivity tau
+    private val onCategoryClick: (String) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
-
-    // Simpan posisi mana yang lagi dipilih
     private var selectedPosition = 0
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,27 +31,19 @@ class CategoryAdapter(
         val category = categories[position]
         holder.text.text = category.name
 
-        // Logika Ganti Warna
         if (selectedPosition == position) {
-            // Kalau dipilih: Background Hitam, Teks Putih
             holder.card.setCardBackgroundColor(Color.BLACK)
             holder.text.setTextColor(Color.WHITE)
         } else {
-            // Kalau tidak: Background Putih, Teks Hitam
             holder.card.setCardBackgroundColor(Color.WHITE)
             holder.text.setTextColor(Color.BLACK)
         }
 
         holder.itemView.setOnClickListener {
-            // Update posisi yang dipilih
             val previousPosition = selectedPosition
-            selectedPosition = holder.adapterPosition
-
-            // Refresh tampilan biar warnanya berubah
+            selectedPosition = holder.bindingAdapterPosition
             notifyItemChanged(previousPosition)
             notifyItemChanged(selectedPosition)
-
-            // Kasih tau MainActivity
             onCategoryClick(category.name)
         }
     }
