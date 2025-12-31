@@ -61,7 +61,7 @@ Di era digital, inspirasi desain infrastruktur dan hunian masih tersebar di berb
 
    * Tag user lain sebagai kolaborator desain
    * Menampilkan daftar kolaborator pada desain
-   * (Opsional) Like / Favorite desain
+   * Like / Favorite desain
 
 6. **Profil Pengguna**
 
