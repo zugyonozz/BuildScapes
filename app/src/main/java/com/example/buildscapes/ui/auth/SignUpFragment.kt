@@ -16,29 +16,42 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
         super.onViewCreated(view, savedInstanceState)
 
         val btnSignUp = view.findViewById<Button>(R.id.btnDoSignUp)
-        val tvLogin = view.findViewById<TextView>(R.id.tvGoToLogin)
+        val tvLogin = view.findViewById<TextView>(R.id.tv_login_link)
 
-        // Input Fields
         val etEmail = view.findViewById<EditText>(R.id.etSignEmail)
         val etUser = view.findViewById<EditText>(R.id.etSignUsername)
-        val etPass = view.findViewById<EditText>(R.id.etSignPassword)
-        val etConf = view.findViewById<EditText>(R.id.etSignConfirmPass)
+        val etPass = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignPassword)
+        val etConf = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignConfirmPass)
 
-        // Klik tombol Sign Up
         btnSignUp.setOnClickListener {
-            // need extend
-            if (etEmail.text.isEmpty() || etUser.text.isEmpty() || etPass.text.isEmpty()) {
-                Toast.makeText(context, "required fill!", Toast.LENGTH_SHORT).show()
-            } else if (etPass.text.toString() != etConf.text.toString()) {
-                Toast.makeText(context, "Password isn't match!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Account ${etUser.text} successfully created!", Toast.LENGTH_SHORT).show()
+            val email = etEmail.text.toString().trim()
+            val username = etUser.text.toString().trim()
+            val password = etPass.text.toString().trim()
+            val confirmPass = etConf.text.toString().trim()
 
-                findNavController().navigate(R.id.action_signup_to_login)
+            when {
+                email.isEmpty() || username.isEmpty() || password.isEmpty() -> {
+                    Toast.makeText(context, "Semua field wajib diisi!", Toast.LENGTH_SHORT).show()
+                }
+                !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    Toast.makeText(context, "Format email tidak valid!", Toast.LENGTH_SHORT).show()
+                }
+                password.length < 6 -> {
+                    Toast.makeText(context, "Password minimal 6 karakter!", Toast.LENGTH_SHORT).show()
+                }
+                password != confirmPass -> {
+                    Toast.makeText(context, "Password tidak cocok!", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    // ✅ TODO: Tambahkan Firebase/API untuk register
+                    Toast.makeText(context, "Akun $username berhasil dibuat! 🎉", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_signup_to_login)
+                }
             }
         }
 
         tvLogin.setOnClickListener {
+            // Kembali ke Login
             findNavController().popBackStack()
         }
     }

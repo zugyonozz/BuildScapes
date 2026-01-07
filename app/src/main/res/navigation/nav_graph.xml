@@ -5,6 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <!-- ============ SPLASH ============ -->
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.buildscapes.ui.auth.SplashFragment"
@@ -26,11 +27,11 @@
             app:popUpToInclusive="true"/>
     </fragment>
 
+    <!-- ============ WELCOME ============ -->
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.buildscapes.WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
-
         <action
             android:id="@+id/action_welcome_to_onboarding"
             app:destination="@id/onboardingFragment"
@@ -38,17 +39,19 @@
             app:popUpToInclusive="true"/>
     </fragment>
 
+    <!-- ============ ONBOARDING ============ -->
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.example.buildscapes.OnboardingFragment"
         tools:layout="@layout/fragment_onboarding">
         <action
-            android:id="@+id/action_onboarding_to_welcome"
-            app:destination="@id/welcomeFragment"
+            android:id="@+id/action_onboarding_to_landing"
+            app:destination="@id/landingFragment"
             app:popUpTo="@id/onboardingFragment"
             app:popUpToInclusive="true"/>
     </fragment>
 
+    <!-- ============ LANDING (Login/SignUp Page) ============ -->
     <fragment
         android:id="@+id/landingFragment"
         android:name="com.example.buildscapes.ui.auth.LandingFragment"
@@ -61,42 +64,50 @@
             app:destination="@id/signUpFragment" />
     </fragment>
 
+    <!-- ============ LOGIN ============ -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.buildscapes.ui.auth.LoginFragment"
         tools:layout="@layout/fragment_login">
+        <!-- ✅ Clear back stack saat login sukses -->
         <action
             android:id="@+id/action_login_to_home"
-            app:destination="@id/discoverFragment"/>
+            app:destination="@id/discoverFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false"/>
         <action
             android:id="@+id/action_login_to_setup"
             app:destination="@id/setupProfileFragment"/>
         <action
             android:id="@+id/action_login_to_signup"
-            app:destination="@+id/signupFragment"/>
+            app:destination="@id/signUpFragment"/>
     </fragment>
 
+    <!-- ============ SIGN UP ============ -->
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.buildscapes.ui.auth.SignUpFragment"
         tools:layout="@layout/fragment_signup">
         <action
             android:id="@+id/action_signup_to_login"
-            app:destination="@+id/loginFragment"/>
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/landingFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
 
+    <!-- ============ SETUP PROFILE ============ -->
     <fragment
         android:id="@+id/setupProfileFragment"
         android:name="com.example.buildscapes.ui.auth.SetupProfileFragment"
         tools:layout="@layout/fragment_setup_profile">
-
         <action
             android:id="@+id/action_setup_to_home"
             app:destination="@id/discoverFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false"/>
     </fragment>
 
+    <!-- ============ MAIN CONTENT ============ -->
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.example.buildscapes.DiscoverFragment"
@@ -127,21 +138,26 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 
+    <!-- ============ DETAIL ============ -->
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.buildscapes.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
-
         <argument android:name="id" app:argType="integer" />
         <argument android:name="title" app:argType="string" />
         <argument android:name="imageUrl" app:argType="string" />
     </fragment>
 
+    <!-- ============ SETTINGS ============ -->
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.buildscapes.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settings_to_login"
+            app:destination="@id/loginFragment"/>
+    </fragment>
 
 </navigation>

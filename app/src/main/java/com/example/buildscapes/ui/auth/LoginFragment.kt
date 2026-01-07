@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.buildscapes.R
+import com.example.buildscapes.util.SessionManager
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -16,19 +18,32 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         val btnLogin = view.findViewById<Button>(R.id.btnDoLogin)
         val etEmail = view.findViewById<EditText>(R.id.etEmail)
-        val etPass = view.findViewById<EditText>(R.id.etPassword)
+        val etPass = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etPassword)
+        val tvSignUp = view.findViewById<TextView>(R.id.tvSignupLink)
 
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString()
-            val pass = etPass.text.toString()
+            val email = etEmail.text.toString().trim()
+            val pass = etPass.text.toString().trim()
 
-            // need extend
-            if (email.isNotEmpty() && pass.isNotEmpty()) {
-                Toast.makeText(context, "Login Success (Dummy)", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_login_to_home)
-            } else {
-                Toast.makeText(context, "Isi dulu woi!", Toast.LENGTH_SHORT).show()
+            when {
+                email.isEmpty() || pass.isEmpty() -> {
+                    Toast.makeText(context, "Email dan Password wajib diisi!", Toast.LENGTH_SHORT).show()
+                }
+                pass.length < 6 -> {
+                    Toast.makeText(context, "Password minimal 6 karakter!", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    val session = SessionManager(requireContext())
+                    session.isLoggedIn = true
+
+                    Toast.makeText(context, "Login berhasil! Welcome back 🎉", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_login_to_home)
+                }
             }
+        }
+
+        tvSignUp?.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_signup)
         }
     }
 }

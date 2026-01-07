@@ -3,24 +3,30 @@ package com.example.buildscapes
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.buildscapes.adapter.OnboardingAdapter
 import com.example.buildscapes.adapter.OnboardingItemAdapter
 import com.example.buildscapes.util.SessionManager
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
+
+    private lateinit var dots: List<View>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPagerOnboarding)
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutIndicator)
         val btnAction = view.findViewById<Button>(R.id.btnOnboardingAction)
-        
+
+        dots = listOf(
+            view.findViewById(R.id.dot1),
+            view.findViewById(R.id.dot2),
+            view.findViewById(R.id.dot3)
+        )
+
         val onboardingItemAdapters = listOf(
             OnboardingItemAdapter(
                 R.drawable.bg_house_exterior,
@@ -40,11 +46,13 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         )
 
         viewPager.adapter = OnboardingAdapter(onboardingItemAdapters)
-        TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+
+                updateDots(position)
+
                 if (position == onboardingItemAdapters.size - 1) {
                     btnAction.text = "GET STARTED"
                 } else {
@@ -59,8 +67,29 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
                 viewPager.currentItem = currentItem + 1
             } else {
                 SessionManager(requireContext()).isFirstRun = false
-                findNavController().navigate(R.id.action_onboarding_to_welcome)
+                findNavController().navigate(R.id.action_onboarding_to_landing)
             }
         }
+    }
+
+    private fun updateDots(currentPosition: Int) {
+        dots.forEachIndexed { index, dot ->
+            val layoutParams = dot.layoutParams
+
+            if (index == currentPosition) {
+                layoutParams.width = dpToPx(24)
+                dot.setBackgroundResource(R.drawable.dot_active)
+            } else {
+                layoutParams.width = dpToPx(8)
+                dot.setBackgroundResource(R.drawable.dot_inactive)
+            }
+
+            dot.layoutParams = layoutParams
+        }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        val density = resources.displayMetrics.density
+        return (dp * density).toInt()
     }
 }
