@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/discoverFragment"
         android:icon="@drawable/ic_compass"
         android:title="Home" />
 
     <item
-        android:id="@+id/nav_bookmark"
+        android:id="@+id/bookmarkFragment"
         android:icon="@drawable/ic_bookmark"
         android:title="Saved" />
 
     <item
-        android:id="@+id/nav_add"
+        android:id="@+id/uploadFragment"
         android:icon="@android:drawable/ic_input_add"
         android:title="Add" />
 
     <item
-        android:id="@+id/nav_notifications"
+        android:id="@+id/notificationFragment"
         android:icon="@drawable/ic_notification"
         android:title="Updates" />
 
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_person_white"
         android:title="Profile" />
 </menu>

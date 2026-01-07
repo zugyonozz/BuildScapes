@@ -73,7 +73,7 @@ class DiscoverFragment : Fragment() {
             }
 
             androidx.navigation.Navigation.findNavController(view)
-                .navigate(R.id.nav_detail, bundle)
+                .navigate(R.id.detailFragment, bundle)
         }
     }
 }

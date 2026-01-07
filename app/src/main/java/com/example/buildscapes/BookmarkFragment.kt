@@ -42,7 +42,7 @@ class BookmarkFragment : Fragment() {
                         putString("title", item.title)
                         putString("imageUrl", item.imageUrl)
                     }
-                    findNavController().navigate(R.id.nav_detail, bundle)
+                    findNavController().navigate(R.id.detailFragment, bundle)
                 }
             }
         }

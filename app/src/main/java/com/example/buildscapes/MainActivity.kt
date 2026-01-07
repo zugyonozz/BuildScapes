@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNotificationBadge(bottomNav: BottomNavigationView) {
-        val badge = bottomNav.getOrCreateBadge(R.id.nav_notifications)
+        val badge = bottomNav.getOrCreateBadge(R.id.notificationFragment)
 
         badge.isVisible = true
         badge.number = 5

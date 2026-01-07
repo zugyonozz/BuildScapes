@@ -47,7 +47,7 @@ class ProfileFragment : Fragment() {
             }
 
             androidx.navigation.Navigation.findNavController(view)
-                .navigate(R.id.nav_detail, bundle)
+                .navigate(R.id.detailFragment, bundle)
         }
 
         btnEdit.setOnClickListener {
@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
         }
 
         btnSettings.setOnClickListener {
-            androidx.navigation.Navigation.findNavController(view).navigate(R.id.nav_settings)
+            androidx.navigation.Navigation.findNavController(view).navigate(R.id.settingsFragment)
         }
     }
 }
