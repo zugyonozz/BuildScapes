@@ -23,6 +23,7 @@
         app:layout_constraintBottom_toTopOf="@id/btnOnboardingAction"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOnboardingAction"
         android:layout_width="match_parent"

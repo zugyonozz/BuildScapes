@@ -34,7 +34,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
             } else {
                 Toast.makeText(context, "Account ${etUser.text} successfully created!", Toast.LENGTH_SHORT).show()
 
-                findNavController().navigate(R.id.action_signup_to_home)
+                findNavController().navigate(R.id.action_signup_to_login)
             }
         }
 

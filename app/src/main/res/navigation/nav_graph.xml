@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/discoverFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -20,7 +20,7 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true"/>
         <action
-            android:id="@+id/action_splash_to_home"
+            android:id="@+id/action_splash_to_discover"
             app:destination="@id/discoverFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true"/>
@@ -68,12 +68,22 @@
         <action
             android:id="@+id/action_login_to_home"
             app:destination="@id/discoverFragment"/>
+        <action
+            android:id="@+id/action_login_to_setup"
+            app:destination="@id/setupProfileFragment"/>
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@+id/signupFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.buildscapes.ui.auth.SignUpFragment"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@+id/loginFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/setupProfileFragment"

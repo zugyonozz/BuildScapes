@@ -73,8 +73,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@id/tvOr"
         app:layout_constraintStart_toStartOf="@id/btnSignUp"
-        app:layout_centerY_toTopOf="@id/tvOr"
-        app:layout_constraintBottom_toBottomOf="@id/tvOr"/>
+        app:layout_constraintTop_toTopOf="@id/tvOr"
+        app:layout_constraintBottom_toBottomOf="@id/tvOr" />
 
     <View
         android:layout_width="0dp"
@@ -83,7 +83,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@id/tvOr"
         app:layout_constraintEnd_toEndOf="@id/btnSignUp"
-        app:layout_centerY_toTopOf="@id/tvOr"
+        app:layout_constraintTop_toTopOf="@id/tvOr"
         app:layout_constraintBottom_toBottomOf="@id/tvOr"/>
 
     <com.google.android.material.button.MaterialButton

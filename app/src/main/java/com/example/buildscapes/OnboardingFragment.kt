@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.buildscapes.adapter.OnboardingAdapter
 import com.example.buildscapes.adapter.OnboardingItemAdapter
+import com.example.buildscapes.util.SessionManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,7 +21,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutIndicator)
         val btnAction = view.findViewById<Button>(R.id.btnOnboardingAction)
         
-        val OnboardingItemAdapters = listOf(
+        val onboardingItemAdapters = listOf(
             OnboardingItemAdapter(
                 R.drawable.bg_house_exterior,
                 "Explore inspiring home designs to spark your next big idea.",
@@ -38,13 +39,13 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             )
         )
 
-        viewPager.adapter = OnboardingAdapter(OnboardingItemAdapters)
+        viewPager.adapter = OnboardingAdapter(onboardingItemAdapters)
         TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == OnboardingItemAdapters.size - 1) {
+                if (position == onboardingItemAdapters.size - 1) {
                     btnAction.text = "GET STARTED"
                 } else {
                     btnAction.text = "NEXT"
@@ -54,13 +55,11 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
         btnAction.setOnClickListener {
             val currentItem = viewPager.currentItem
-            if (currentItem < OnboardingItemAdapters.size - 1) {
+            if (currentItem < onboardingItemAdapters.size - 1) {
                 viewPager.currentItem = currentItem + 1
             } else {
+                SessionManager(requireContext()).isFirstRun = false
                 findNavController().navigate(R.id.action_onboarding_to_welcome)
-
-                // Simpan state kalau user udah pernah liat onboarding (opsional, nanti aja)
-                // need extend
             }
         }
     }

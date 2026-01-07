@@ -29,17 +29,10 @@ class SetupProfileFragment : Fragment(R.layout.fragment_setup_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         ivProfile = view.findViewById(R.id.ivProfileImage)
-        val btnBack = view.findViewById<ImageView>(R.id.btnBack)
         val btnContinue = view.findViewById<Button>(R.id.btnContinue)
 
-        // Klik foto -> Buka Galeri
         view.findViewById<View>(R.id.layoutAvatar).setOnClickListener {
             pickImageLauncher.launch("image/*")
-        }
-
-        // Back -> Balik ke halaman sebelumnya (kalau user berubah pikiran/mau logout)
-        btnBack.setOnClickListener {
-            findNavController().popBackStack()
         }
 
         btnContinue.setOnClickListener {

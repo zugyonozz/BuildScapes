@@ -1,6 +1,7 @@
 package com.example.buildscapes
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -16,6 +17,20 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.discoverFragment,
+                R.id.bookmarkFragment,
+                R.id.uploadFragment,
+                R.id.notificationFragment,
+                R.id.profileFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                }
+                else -> {
+                    bottomNav.visibility = View.GONE
+                }
+            }
+        }
 
         bottomNav.setupWithNavController(navController)
         setupNotificationBadge(bottomNav)

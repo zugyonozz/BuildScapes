@@ -20,8 +20,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:layout_marginStart="16dp"
-            app:layout_centerY_toTopOf="@id/btnBack"/>
+            android:layout_marginStart="16dp" />
 
         <FrameLayout
             android:id="@+id/layoutAvatar"
