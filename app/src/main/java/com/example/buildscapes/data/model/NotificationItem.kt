@@ -1,4 +1,4 @@
-package com.example.buildscapes.model
+package com.example.buildscapes.data.model
 
 data class NotificationItem(
     val id: Int,

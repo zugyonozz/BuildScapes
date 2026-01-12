@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildscapes.R
-import com.example.buildscapes.model.Category
+import com.example.buildscapes.data.model.Category
 
 class CategoryAdapter(
     private val categories: List<Category>,

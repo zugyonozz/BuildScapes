@@ -1,4 +1,10 @@
 <resources>
+    <string name="google_app_id" translatable="false">1:744459753826:android:061e2975bcb5648f29b43b</string>
+    <string name="google_api_key" translatable="false">AIzaSyBhtfGXzjGUzz2vqlNo3xLS90n1m-wNdaI</string>
+    <string name="gcm_defaultSenderId" translatable="false">744459753826</string>
+    <string name="google_storage_bucket" translatable="false">buildscapes-880f4.firebasestorage.app</string>
+    <string name="project_id" translatable="false">buildscapes-880f4</string>
+
     <string name="app_name">BuildScape</string>
     <string name="app_name_upper">BuildScape</string>
     <string name="app_name_lower">BuildScape</string>

@@ -1,6 +1,6 @@
-package com.example.buildscapes.network
+package com.example.buildscapes.data.network
 
-import com.example.buildscapes.model.DesignItem
+import com.example.buildscapes.data.model.DesignItem
 import retrofit2.Call
 import retrofit2.http.GET
 

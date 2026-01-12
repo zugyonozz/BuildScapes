@@ -1,11 +1,11 @@
-package com.example.buildscapes.viewmodel
+package com.example.buildscapes.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.buildscapes.BuildScapesApp
-import com.example.buildscapes.data.DesignRepository
-import com.example.buildscapes.model.DesignItem
+import com.example.buildscapes.data.repository.DesignRepository
+import com.example.buildscapes.data.model.DesignItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

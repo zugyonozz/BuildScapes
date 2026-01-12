@@ -1,6 +1,7 @@
-package com.example.buildscapes.data
+package com.example.buildscapes.data.repository
 
-import com.example.buildscapes.model.DesignItem
+import com.example.buildscapes.data.local.DesignDao
+import com.example.buildscapes.data.model.DesignItem
 import kotlinx.coroutines.flow.Flow
 
 class DesignRepository(private val designDao: DesignDao) {

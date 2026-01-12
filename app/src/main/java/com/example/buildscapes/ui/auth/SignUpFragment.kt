@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.buildscapes.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
     private lateinit var auth: FirebaseAuth
@@ -22,22 +21,18 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
 
         val btnSignUp = view.findViewById<Button>(R.id.btnDoSignUp)
         val tvLogin = view.findViewById<TextView>(R.id.tv_login_link)
-
         val etEmail = view.findViewById<EditText>(R.id.etSignEmail)
-        val etUser = view.findViewById<EditText>(R.id.etSignUsername)
-
         val etPass = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignPassword)
         val etConf = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignConfirmPass)
 
         btnSignUp.setOnClickListener {
             val email = etEmail.text.toString().trim()
-            val username = etUser.text.toString().trim()
             val password = etPass.text.toString().trim()
             val confirmPass = etConf.text.toString().trim()
 
             when {
-                email.isEmpty() || username.isEmpty() || password.isEmpty() -> {
-                    Toast.makeText(context, "Semua field wajib diisi!", Toast.LENGTH_SHORT).show()
+                email.isEmpty() || password.isEmpty() -> {
+                    Toast.makeText(context, "Email dan Password wajib diisi!", Toast.LENGTH_SHORT).show()
                 }
                 !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                     Toast.makeText(context, "Format email tidak valid!", Toast.LENGTH_SHORT).show()
@@ -52,20 +47,14 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
                     btnSignUp.isEnabled = false
                     btnSignUp.text = "Creating Account..."
 
+                    // Create account and go directly to setup profile
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val user = auth.currentUser
-                                val profileUpdates = UserProfileChangeRequest.Builder()
-                                    .setDisplayName(username)
-                                    .build()
+                                Toast.makeText(context, "Account created! Please complete your profile 🎉", Toast.LENGTH_SHORT).show()
 
-                                user?.updateProfile(profileUpdates)?.addOnCompleteListener {
-                                    Toast.makeText(context, "Akun $username berhasil dibuat! 🎉", Toast.LENGTH_SHORT).show()
-                                    auth.signOut()
-
-                                    findNavController().navigate(R.id.action_signup_to_login)
-                                }
+                                // Navigate to setup profile (stay logged in)
+                                findNavController().navigate(R.id.action_signup_to_setup)
                             } else {
                                 btnSignUp.isEnabled = true
                                 btnSignUp.text = getString(R.string.sign_up)

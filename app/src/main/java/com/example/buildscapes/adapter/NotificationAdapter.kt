@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildscapes.R
-import com.example.buildscapes.model.NotificationItem
+import com.example.buildscapes.data.model.NotificationItem
 
 class NotificationAdapter(private val items: List<NotificationItem>) :
     RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {

@@ -10,10 +10,10 @@ material = "1.13.0"
 activity = "1.12.2"
 constraintlayout = "2.2.1"
 navigation = "2.8.5"
-room = "2.6.1"
+room = "2.8.4"
 ksp = "2.0.21-1.0.27"
-googleServices = "4.4.2"
-firebaseBom = "33.7.0"
+googleServices = "4.4.4"
+firebaseBom = "34.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

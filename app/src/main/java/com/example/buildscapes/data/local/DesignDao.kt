@@ -1,11 +1,11 @@
-package com.example.buildscapes.data
+package com.example.buildscapes.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.buildscapes.model.DesignItem
+import com.example.buildscapes.data.model.DesignItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao

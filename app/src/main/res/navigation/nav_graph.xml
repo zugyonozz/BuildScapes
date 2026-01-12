@@ -30,7 +30,7 @@
     <!-- ============ WELCOME ============ -->
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.buildscapes.WelcomeFragment"
+        android:name="com.example.buildscapes.ui.onboarding.WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcome_to_onboarding"
@@ -42,7 +42,7 @@
     <!-- ============ ONBOARDING ============ -->
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.buildscapes.OnboardingFragment"
+        android:name="com.example.buildscapes.ui.onboarding.OnboardingFragment"
         tools:layout="@layout/fragment_onboarding">
         <action
             android:id="@+id/action_onboarding_to_landing"
@@ -69,15 +69,11 @@
         android:id="@+id/loginFragment"
         android:name="com.example.buildscapes.ui.auth.LoginFragment"
         tools:layout="@layout/fragment_login">
-        <!-- ✅ Clear back stack saat login sukses -->
         <action
             android:id="@+id/action_login_to_home"
             app:destination="@id/discoverFragment"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="false"/>
-        <action
-            android:id="@+id/action_login_to_setup"
-            app:destination="@id/setupProfileFragment"/>
         <action
             android:id="@+id/action_login_to_signup"
             app:destination="@id/signUpFragment"/>
@@ -93,6 +89,11 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/landingFragment"
             app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_signup_to_setup"
+            app:destination="@id/setupProfileFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <!-- ============ SETUP PROFILE ============ -->
@@ -110,54 +111,71 @@
     <!-- ============ MAIN CONTENT ============ -->
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.example.buildscapes.DiscoverFragment"
+        android:name="com.example.buildscapes.ui.home.DiscoverFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_discover" />
 
     <fragment
         android:id="@+id/bookmarkFragment"
-        android:name="com.example.buildscapes.BookmarkFragment"
+        android:name="com.example.buildscapes.ui.saved.BookmarkFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/uploadFragment"
-        android:name="com.example.buildscapes.UploadFragment"
+        android:name="com.example.buildscapes.ui.upload.UploadFragment"
         android:label="fragment_upload"
         tools:layout="@layout/fragment_upload" />
 
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.example.buildscapes.NotificationFragment"
+        android:name="com.example.buildscapes.ui.notification.NotificationFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.buildscapes.ProfileFragment"
+        android:name="com.example.buildscapes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_edit"
+            app:destination="@id/editProfileFragment"/>
+    </fragment>
 
-    <!-- ============ DETAIL ============ -->
+    <!-- ============ EDIT PROFILE ============ -->
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.buildscapes.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
-        <argument android:name="id" app:argType="integer" />
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.buildscapes.ui.profile.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile"/>
+
+    <!-- ============ POST DETAIL ============ -->
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.example.buildscapes.ui.detail.PostDetailFragment"
+        android:label="fragment_post_detail"
+        tools:layout="@layout/fragment_post_detail">
+        <argument android:name="postId" app:argType="string" />
         <argument android:name="title" app:argType="string" />
         <argument android:name="imageUrl" app:argType="string" />
+        <argument android:name="userId" app:argType="string" />
     </fragment>
 
     <!-- ============ SETTINGS ============ -->
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.buildscapes.SettingsFragment"
+        android:name="com.example.buildscapes.ui.profile.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settings_to_login"
-            app:destination="@id/loginFragment"/>
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_settings_to_edit"
+            app:destination="@id/editProfileFragment"/>
     </fragment>
 
 </navigation>

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@android:drawable/ic_menu_revert"
-            app:title="Design Detail"
+            app:title="Post Detail"
             app:titleTextColor="@android:color/white"/>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,7 +33,7 @@
             <ImageView
                 android:id="@+id/imgDetail"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="400dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
 
@@ -46,7 +46,7 @@
                     android:id="@+id/tvDetailTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Modern House Concept"
+                    android:text="Design Title"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingBottom="20dp"
-                android:text="This architectural masterpiece combines modern aesthetics with functional living spaces. Designed to maximize natural light and providing a seamless transition between indoor and outdoor environments."
+                android:text="This is an architectural design shared by one of our community members."
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp"
                 android:textColor="#666666"/>

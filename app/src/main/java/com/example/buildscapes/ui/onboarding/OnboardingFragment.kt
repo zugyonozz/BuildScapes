@@ -1,12 +1,12 @@
-package com.example.buildscapes
+package com.example.buildscapes.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.example.buildscapes.R
 import com.example.buildscapes.adapter.OnboardingAdapter
 import com.example.buildscapes.adapter.OnboardingItemAdapter
 import com.example.buildscapes.util.SessionManager

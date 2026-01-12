@@ -1,4 +1,4 @@
-package com.example.buildscapes.model
+package com.example.buildscapes.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

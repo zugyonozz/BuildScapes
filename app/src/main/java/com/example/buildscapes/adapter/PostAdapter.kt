@@ -7,12 +7,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.buildscapes.R
-import com.example.buildscapes.data.model.DesignItem
+import com.example.buildscapes.data.model.Post
 
-class DesignAdapter(
-    private val items: List<DesignItem>,
-    private val onItemClick: (DesignItem) -> Unit // Callback klik
-) : RecyclerView.Adapter<DesignAdapter.ViewHolder>() {
+class PostAdapter(
+    private val items: List<Post>,
+    private val onItemClick: (Post) -> Unit
+) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.imgDesign)
@@ -28,6 +28,7 @@ class DesignAdapter(
 
         Glide.with(holder.itemView.context)
             .load(item.imageUrl)
+            .placeholder(R.drawable.ic_launcher_background)
             .into(holder.image)
 
         holder.itemView.setOnClickListener {

@@ -1,108 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@android:color/white">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:padding="20dp"
-        android:background="#FAFAFA"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:background="#F5F5F5"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Currently logged in as:"
-            android:textSize="12sp"
-            android:textColor="#757575"/>
-
-        <TextView
-            android:id="@+id/tvSettingsEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="user@email.com"
-            android:textSize="16sp"
+            android:text="@string/settings"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="4dp"/>
+            android:padding="20dp"
+            android:background="#FAFAFA"/>
+
+        <!-- User Info Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logged in as:"
+                android:textSize="12sp"
+                android:textColor="#757575"/>
+
+            <TextView
+                android:id="@+id/tvSettingsUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/tvSettingsEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="user@email.com"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Account Settings -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACCOUNT"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:background="#FAFAFA"/>
+
+        <TextView
+            android:id="@+id/menuEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:drawableEnd="@android:drawable/ic_media_play"
+            android:drawableTint="#BDBDBD"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
+
+        <TextView
+            android:id="@+id/menuChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:drawableEnd="@android:drawable/ic_media_play"
+            android:drawableTint="#BDBDBD"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
+
+        <!-- Preferences -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PREFERENCES"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:background="#FAFAFA"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/menuNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notifications"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:drawableEnd="@android:drawable/ic_media_play"
+            android:drawableTint="#BDBDBD"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
+
+        <TextView
+            android:id="@+id/menuSecurity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Security &amp; Privacy"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:drawableEnd="@android:drawable/ic_media_play"
+            android:drawableTint="#BDBDBD"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
+
+        <!-- App Info -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APP INFO"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:background="#FAFAFA"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/menuAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About BuildScapes"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:drawableEnd="@android:drawable/ic_media_play"
+            android:drawableTint="#BDBDBD"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
+
+        <!-- Danger Zone -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DANGER ZONE"
+            android:textSize="12sp"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:background="#FFF5F5"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/menuDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Account"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="#D32F2F"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#FFEBEE"/>
+
+        <TextView
+            android:id="@+id/menuLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <!-- Version Info -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version 1.0.0"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:gravity="center"
+            android:padding="20dp"/>
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/menuEditProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:drawableEnd="@android:drawable/ic_media_play"
-        android:drawableTint="#BDBDBD"/>
-
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
-
-    <TextView
-        android:id="@+id/menuNotifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notifications"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:drawableEnd="@android:drawable/ic_media_play"
-        android:drawableTint="#BDBDBD"/>
-
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
-
-    <TextView
-        android:id="@+id/menuSecurity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Security &amp; Privacy"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:drawableEnd="@android:drawable/ic_media_play"
-        android:drawableTint="#BDBDBD"/>
-
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
-
-    <TextView
-        android:id="@+id/menuAbout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="About BuildScapes"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:drawableEnd="@android:drawable/ic_media_play"
-        android:drawableTint="#BDBDBD"/>
-
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE"/>
-
-    <TextView
-        android:id="@+id/menuLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Log Out"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="#D32F2F"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:gravity="center"/>
-
-</LinearLayout>
+</ScrollView>
