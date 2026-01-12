@@ -10,11 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.buildscapes.R
 import com.example.buildscapes.util.SessionManager
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
 
         val btnLogin = view.findViewById<Button>(R.id.btnDoLogin)
         val etEmail = view.findViewById<EditText>(R.id.etEmail)
@@ -33,11 +38,27 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     Toast.makeText(context, "Password minimal 6 karakter!", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    val session = SessionManager(requireContext())
-                    session.isLoggedIn = true
+                    btnLogin.isEnabled = false
+                    btnLogin.text = "Logging in..."
 
-                    Toast.makeText(context, "Login berhasil! Welcome back 🎉", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_login_to_home)
+                    // 🔥 LOGIN FIREBASE
+                    auth.signInWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener { task ->
+                            btnLogin.isEnabled = true
+                            btnLogin.text = getString(R.string.login)
+
+                            if (task.isSuccessful) {
+                                val user = auth.currentUser
+                                val name = user?.displayName ?: "User"
+                                val session = SessionManager(requireContext())
+                                session.isLoggedIn = true
+
+                                Toast.makeText(context, "Welcome back, $name! 🎉", Toast.LENGTH_SHORT).show()
+                                findNavController().navigate(R.id.action_login_to_home)
+                            } else {
+                                Toast.makeText(context, "Login Gagal: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                            }
+                        }
                 }
             }
         }

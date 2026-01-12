@@ -11,4 +11,7 @@
     <string name="logout">Log Out</string>
     <string name="greeting">What\'s your looking for today...</string>
     <string name="login">LOGIN</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Erina Celine</string>
+    <string name="settings">Settings</string>
 </resources>

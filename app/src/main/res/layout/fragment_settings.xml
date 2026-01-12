@@ -8,12 +8,38 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="20sp"
+        android:text="@string/settings"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:padding="20dp"
         android:background="#FAFAFA"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="#F5F5F5"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Currently logged in as:"
+            android:textSize="12sp"
+            android:textColor="#757575"/>
+
+        <TextView
+            android:id="@+id/tvSettingsEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user@email.com"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/menuEditProfile"
@@ -45,7 +71,7 @@
         android:id="@+id/menuSecurity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/security"
+        android:text="Security &amp; Privacy"
         android:padding="16dp"
         android:textSize="16sp"
         android:textColor="@color/black"
@@ -58,7 +84,7 @@
         android:id="@+id/menuAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/about"
+        android:text="About BuildScapes"
         android:padding="16dp"
         android:textSize="16sp"
         android:textColor="@color/black"
@@ -71,7 +97,7 @@
         android:id="@+id/menuLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
+        android:text="Log Out"
         android:padding="16dp"
         android:textSize="16sp"
         android:textColor="#D32F2F"

@@ -17,6 +17,7 @@
             android:layout_height="?attr/actionBarSize">
 
             <TextView
+                android:id="@+id/tv_profile_fragment_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_username"
@@ -133,9 +134,10 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_profile_fragment_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Erina Celine"
+                android:text="@string/name"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginTop="12dp"/>

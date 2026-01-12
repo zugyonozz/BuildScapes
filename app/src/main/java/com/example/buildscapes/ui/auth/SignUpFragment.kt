@@ -9,17 +9,23 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.buildscapes.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
+    private lateinit var auth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
 
         val btnSignUp = view.findViewById<Button>(R.id.btnDoSignUp)
         val tvLogin = view.findViewById<TextView>(R.id.tv_login_link)
 
         val etEmail = view.findViewById<EditText>(R.id.etSignEmail)
         val etUser = view.findViewById<EditText>(R.id.etSignUsername)
+
         val etPass = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignPassword)
         val etConf = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etSignConfirmPass)
 
@@ -43,15 +49,34 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
                     Toast.makeText(context, "Password tidak cocok!", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    // ✅ TODO: Tambahkan Firebase/API untuk register
-                    Toast.makeText(context, "Akun $username berhasil dibuat! 🎉", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_signup_to_login)
+                    btnSignUp.isEnabled = false
+                    btnSignUp.text = "Creating Account..."
+
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val user = auth.currentUser
+                                val profileUpdates = UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username)
+                                    .build()
+
+                                user?.updateProfile(profileUpdates)?.addOnCompleteListener {
+                                    Toast.makeText(context, "Akun $username berhasil dibuat! 🎉", Toast.LENGTH_SHORT).show()
+                                    auth.signOut()
+
+                                    findNavController().navigate(R.id.action_signup_to_login)
+                                }
+                            } else {
+                                btnSignUp.isEnabled = true
+                                btnSignUp.text = getString(R.string.sign_up)
+                                Toast.makeText(context, "Gagal: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                            }
+                        }
                 }
             }
         }
 
         tvLogin.setOnClickListener {
-            // Kembali ke Login
             findNavController().popBackStack()
         }
     }

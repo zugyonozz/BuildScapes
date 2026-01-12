@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.buildscapes.adapter.DesignAdapter
 import com.example.buildscapes.model.DesignItem
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +25,18 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        val tvName = view.findViewById<TextView>(R.id.tv_profile_fragment_username)
+        val tvEmail = view.findViewById<TextView>(R.id.tvBio) // Kita pake bio buat email sementara
+
+        if (user != null) {
+            tvName.text = user.displayName ?: "No Name"
+            tvEmail.text = user.email
+        } else {
+            // Kalau gak ada user (aneh sih bisa masuk sini), balikin ke Login
+            // findNavController().navigate(R.id.action_global_login)
+        }
 
         val rvProfileDesigns = view.findViewById<RecyclerView>(R.id.rvProfileDesigns)
         val btnEdit = view.findViewById<Button>(R.id.btnEditProfile)

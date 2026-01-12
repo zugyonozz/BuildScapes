@@ -1,58 +1,46 @@
 package com.example.buildscapes
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.buildscapes.util.SessionManager
+import com.google.firebase.auth.FirebaseAuth
 
-class SettingsFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
+class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        val tvEmail = view.findViewById<TextView>(R.id.tvSettingsEmail)
+
+        if (user != null) {
+            tvEmail.text = user.email // Tampilkan Email Asli
+        } else {
+            tvEmail.text = "Guest Mode"
+        }
 
         view.findViewById<TextView>(R.id.menuEditProfile).setOnClickListener {
             Toast.makeText(requireContext(), "Edit Profile Clicked", Toast.LENGTH_SHORT).show()
         }
 
         view.findViewById<TextView>(R.id.menuLogout).setOnClickListener {
-            showLogoutDialog()
+            AlertDialog.Builder(requireContext())
+                .setTitle("Log Out")
+                .setMessage("Are you sure you want to sign out?")
+                .setPositiveButton("Yes") { _, _ ->
+                    FirebaseAuth.getInstance().signOut()
+                    val session = SessionManager(requireContext())
+                    session.isLoggedIn = false
+                    findNavController().navigate(R.id.action_settings_to_login)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
-    }
-
-    private fun showLogoutDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Logout")
-            .setMessage("Apakah kamu yakin ingin keluar?")
-            .setPositiveButton("Ya") { _, _ ->
-                performLogout()
-            }
-            .setNegativeButton("Batal", null)
-            .show()
-    }
-
-    private fun performLogout() {
-        val session = SessionManager(requireContext())
-        session.logout()
-
-        Toast.makeText(requireContext(), "Berhasil logout! 👋", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(
-            R.id.action_settings_to_login,
-            null,
-            androidx.navigation.NavOptions.Builder()
-                .setPopUpTo(R.id.nav_graph, true)
-                .build()
-        )
     }
 }
