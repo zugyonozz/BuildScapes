@@ -7,25 +7,25 @@
     android:background="#FFFFFF">
 
     <ImageView
-        android:id="@+id/imgLogo"
+        android:id="@+id/iv_brand_anim"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/ic_buildscape"
+        android:src="@drawable/ic_brand"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="110dp"/>
 
     <TextView
-        android:id="@+id/txtBuildscape"
+        android:id="@+id/tv_brand_invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="invisible"
         android:layout_marginStart="-20dp"
-        app:layout_constraintStart_toEndOf="@id/imgLogo"
-        app:layout_constraintTop_toTopOf="@id/imgLogo"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogo"/>
+        app:layout_constraintStart_toEndOf="@id/iv_brand_anim"
+        app:layout_constraintTop_toTopOf="@id/iv_brand_anim"
+        app:layout_constraintBottom_toBottomOf="@id/iv_brand_anim"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

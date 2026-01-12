@@ -10,19 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutIndicator"
+    <LinearLayout
+        android:id="@+id/dotsIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tabBackground="@drawable/indicator_selector"
-        app:tabGravity="center"
-        app:tabIndicatorHeight="0dp"
-        app:tabMaxWidth="20dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@id/btnOnboardingAction"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Dot 1 -->
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="24dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/dot_active"/>
+
+        <!-- Dot 2 -->
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/dot_inactive"/>
+
+        <!-- Dot 3 -->
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/dot_inactive"/>
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOnboardingAction"

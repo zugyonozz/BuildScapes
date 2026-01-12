@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">BuildScape</string>
+    <string name="app_name_upper">BuildScape</string>
+    <string name="app_name_lower">BuildScape</string>
     <string name="profile_username">ErinaCeline</string>
     <string name="profile_desc">Architect &amp; Interior Designer🏠\nCreating spaces that tell a story.\nBased in Jakarta, ID.</string>
 
